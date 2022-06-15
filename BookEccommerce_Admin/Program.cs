@@ -16,7 +16,7 @@ namespace BookEccommerce_Admin
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmDashboard());
+            Application.Run(new FormLogin());
         }
     }
 }

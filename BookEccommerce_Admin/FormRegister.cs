@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AdminBooksite
+namespace BookEccommerce_Admin
 {
-    public partial class Form1 : Form
+    public partial class FormRegister : Form
     {
-        public Form1()
+        public FormRegister()
         {
             InitializeComponent();
         }

@@ -15,6 +15,10 @@ namespace ClassLibrary_RepositoryDLL.Repository
         {
             _context = context;
         }
+        public AccountRepository()
+        {
+            _context = new BookEcommerceContext();
+        }
         public void AddAccount(Account newaccount)
         {
             try
@@ -81,6 +85,24 @@ namespace ClassLibrary_RepositoryDLL.Repository
                 }
             }
             return false;
+        }
+
+        public bool CheckLogin(string username, string password)
+        {
+            var q = from p in _context.Accounts
+                    where p.Username == username
+                    && p.Password == password
+                    select p;
+            if (q.Any())
+            {
+
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
         }
     }
 }

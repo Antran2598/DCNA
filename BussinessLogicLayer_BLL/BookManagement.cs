@@ -10,117 +10,146 @@ namespace BussinessLogicLayer_BLL
 {
     public class BookManagement
     {
-        BookRepository iBookRepository = new BookRepository();
-        AuthorRepository iAuthorRepository = new AuthorRepository();
-        CategoryRepository iCategoryRepository = new CategoryRepository();
-        PublisherRepository iPublisherRepository = new PublisherRepository();
+        BookRepository bookRepository = new BookRepository();
+        AuthorRepository authorRepository = new AuthorRepository();
+        CategoryRepository categoryRepository = new CategoryRepository();
+        PublisherRepository publisherRepository = new PublisherRepository();
         public List<Book> viewAllBook()
         {
-            List<Book> list = iBookRepository.getAllBook();
+            List<Book> list = bookRepository.getAllBook();
             return list;
         }
 
         public void addBook(Book newbook)
         {
-           iBookRepository.AddBook(newbook);
+           bookRepository.AddBook(newbook);
         }
 
         public bool updateBook(Book newbook)
         {
-            bool result= iBookRepository.UpdateBook(newbook);
+            bool result= bookRepository.UpdateBook(newbook);
             return result;
         }
 
         public bool delBook(int bookId)
         {
-            bool result = iBookRepository.DeleteBook(bookId);
+            bool result = bookRepository.DeleteBook(bookId);
             return result;
+        }
+        public bool UpdateImage(Book newbook)
+        {
+            bool result = bookRepository.UpdateImage(newbook);
+            return result;
+        }
+
+        public List<Book> SelectByKeyword(string keyword)
+        {
+            List<Book> books =  bookRepository.searchBook(keyword);
+            return books;
+        }
+
+        public List<Book> GetDetailsByAuthorId(int authorId)
+        {
+            List<Book> books = bookRepository.SelectByAuthorId(authorId);
+            return books;
+        }
+
+        public List<Book> GetDetailsByCateId(int cateId)
+        {
+            List<Book> books = bookRepository.SelectByCateId(cateId);
+            return books;
+        }
+
+        public List<Book> GetDetailsByPubId(int pubId)
+        {
+            List<Book> books = bookRepository.SelectByPubId(pubId);
+            return books;
         }
 
         public Book viewDetailBook(int bookId)
         {
-            Book book = iBookRepository.getDetailBook(bookId);
+            Book book = bookRepository.getDetailBook(bookId);
             return book;
         }
 
         public Author viewAuthor(int authorId)
         {
-            Author author = iAuthorRepository.getAuthor(authorId);
+            Author author = authorRepository.getAuthor(authorId);
             return author;
         }
 
         public void addAuthor(Author newauthor)
         {
-            iAuthorRepository.AddAuthor(newauthor);
+            authorRepository.AddAuthor(newauthor);
         }
 
         public bool updateAuthor(Author newauthor)
         {
-            bool result = iAuthorRepository.UpdateAuthor(newauthor);
+            bool result = authorRepository.UpdateAuthor(newauthor);
             return result;
         }
 
         public bool delAuthor(int authorId)
         {
-            bool result = iAuthorRepository.DeleteAuthor(authorId);
+            bool result = authorRepository.DeleteAuthor(authorId);
             return result;
         }
 
         public Category viewCategory(int cateId)
         {
-            Category category = iCategoryRepository.getCategory(cateId);
+            Category category = categoryRepository.getCategory(cateId);
             return category;
         }
 
         public Publisher viewPublisher(int pubId)
         {
-            Publisher publisher = iPublisherRepository.getPublisher(pubId);
+            Publisher publisher = publisherRepository.getPublisher(pubId);
             return publisher;
         }
         public void addCate(Category newcate)
         {
-            iCategoryRepository.AddCategory(newcate);
+            categoryRepository.AddCategory(newcate);
         }
 
         public bool updateCate(Category newcate)
         {
-            bool result = iCategoryRepository.UpdateCategory(newcate);
+            bool result = categoryRepository.UpdateCategory(newcate);
             return result;
         }
 
         public bool delCate(int categoryId)
         {
-            bool result = iCategoryRepository.DeleteCategory(categoryId);
+            bool result = categoryRepository.DeleteCategory(categoryId);
             return result;
         }
 
         public List<Author> viewAllAuthor()
         {
-            List<Author> list = iAuthorRepository.getAllAuthor();
+            List<Author> list = authorRepository.getAllAuthor();
             return list;
         }
 
         public List<Publisher> viewAllPub()
         {
-            List<Publisher> list = iPublisherRepository.getAllPublisher();
+            List<Publisher> list = publisherRepository.getAllPublisher();
             return list;
         }
 
         public void addPublisher(Publisher newpub)
         {
-            iPublisherRepository.AddPublisher(newpub);
+            publisherRepository.AddPublisher(newpub);
         }
 
         public bool delPublisher(int pubId)
         {
-            bool result = iPublisherRepository.DeletePublisher(pubId);
+            bool result = publisherRepository.DeletePublisher(pubId);
             return result;
         }
 
 
         public List<Category> viewAllCategory()
         {
-            List<Category> list = iCategoryRepository.getAllCategory();
+            List<Category> list = categoryRepository.getAllCategory();
             return list;
         }
 

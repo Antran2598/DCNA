@@ -59,7 +59,28 @@ namespace ClassLibrary_RepositoryDLL.Repository
                     book.Description = newbook.Description;
                     book.Image = newbook.Image;
 
-                    _context.Books.Update(newbook);
+                    //_context.Books.Update(newbook);
+                    _context.SaveChanges();
+                    return true;
+                }
+                catch (Exception exception)
+                {
+                    System.Diagnostics.Debug.WriteLine(exception.Message);
+                }
+            }
+            return false;
+        }
+
+        public bool UpdateImage(Book newbook)
+        {
+            Book book = _context.Books.SingleOrDefault(book => book.Id == newbook.Id);
+            if (book != null)
+            {
+                try
+                {
+                    book.Image = newbook.Image;
+
+                    //_context.Books.Update(newbook);
                     _context.SaveChanges();
                     return true;
                 }
@@ -88,6 +109,30 @@ namespace ClassLibrary_RepositoryDLL.Repository
                 }
             }
             return false;
+        }
+
+        public List<Book> searchBook(string keyword)
+        {
+            List<Book> book = _context.Books.Where(b => b.Bookname.Contains(keyword)).ToList();
+            return book;
+        }
+
+        public List<Book> SelectByAuthorId(int authorid)
+        {
+            List<Book> books = _context.Books.Where(b => b.AuthorId == authorid).ToList();
+            return books;
+        }
+
+        public List<Book> SelectByCateId(int cateid)
+        {
+            List<Book> books = _context.Books.Where(b => b.CategoryId == cateid).ToList();
+            return books;
+        }
+
+        public List<Book> SelectByPubId(int pubid)
+        {
+            List<Book> books = _context.Books.Where(b => b.PublisherId == pubid).ToList();
+            return books;
         }
     }
 }
